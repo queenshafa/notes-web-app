@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Web App</title>
+    <!-- TailwindCSS -->
+    <link rel="stylesheet" href="/src/output.css" />
+    <!-- Remixicon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- AlpineJS -->
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="font-plus-jakarta-sans">
+    <!-- NAVBAR -->
+    <header
+      class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4"
+      x-data="{ open: false }"
+    >
+      <!-- DESKTOP pill -->
+      <nav
+        class="hidden md:flex w-full max-w-2xl bg-white/90 backdrop-blur-md rounded-full shadow-lg px-3 py-3 items-center justify-between"
+      >
+        <a href="#" class="flex-shrink-0">
+          <svg
+            class="logo-svg"
+            viewBox="0 0 90 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 28 C4 28 6 10 10 10 C13 10 13 20 15 20 C17 20 18 10 21 10 C24 10 25 28 25 28"
+              stroke="#111"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <path
+              d="M30 24 C30 20 30 12 33 10 C36 8 39 10 40 14 C41 18 40 22 40 24"
+              stroke="#111"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <path
+              d="M33 18 C35 17 38 17 40 18"
+              stroke="#111"
+              stroke-width="2"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path
+              d="M40 14 C42 10 46 9 48 12 C50 15 48 19 45 20 C47 21 51 24 52 28"
+              stroke="#111"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <path
+              d="M57 13 C57 13 62 11 66 14 C70 17 68 22 64 23 C61 24 58 23 57 21"
+              stroke="#111"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <path
+              d="M57 21 C56 24 57 27 60 28 C63 29 67 27 68 25"
+              stroke="#111"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <line
+              x1="4"
+              y1="33"
+              x2="70"
+              y2="33"
+              stroke="#111"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </a>
+        <div class="flex items-center gap-10">
+          <a
+            href="#"
+            class="nav-link text-[11px] font-semibold tracking-[0.2em] text-gray-800 uppercase"
+            >About</a
+          >
+          <a
+            href="#"
+            class="nav-link text-[11px] font-semibold tracking-[0.2em] text-gray-800 uppercase"
+            >How To Use</a
+          >
+          <a
+            href="#"
+            class="nav-link text-[11px] font-semibold tracking-[0.2em] text-gray-800 uppercase"
+            >Benefits</a
+          >
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-px h-5 bg-gray-300"></div>
+          <button
+            class="bg-secondary text-white text-sm hover:text-gray-700 transition-colors duration-200 p-3 rounded-full cursor-pointer"
+          >
+            Get Started
+            <!-- <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1.6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10 11v5M14 11v5"
+              />
+            </svg> -->
+          </button>
+        </div>
+      </nav>
+
+      <!-- MOBILE card -->
+      <nav
+        class="flex md:hidden w-full max-w-sm bg-white/90 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden flex-col"
+      >
+        <div class="flex items-center justify-between px-5 py-4">
+          <a href="#" class="flex-shrink-0">
+            <svg
+              class="logo-svg"
+              viewBox="0 0 90 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 28 C4 28 6 10 10 10 C13 10 13 20 15 20 C17 20 18 10 21 10 C24 10 25 28 25 28"
+                stroke="#111"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <path
+                d="M30 24 C30 20 30 12 33 10 C36 8 39 10 40 14 C41 18 40 22 40 24"
+                stroke="#111"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <path
+                d="M33 18 C35 17 38 17 40 18"
+                stroke="#111"
+                stroke-width="2"
+                stroke-linecap="round"
+                fill="none"
+              />
+              <path
+                d="M40 14 C42 10 46 9 48 12 C50 15 48 19 45 20 C47 21 51 24 52 28"
+                stroke="#111"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <path
+                d="M57 13 C57 13 62 11 66 14 C70 17 68 22 64 23 C61 24 58 23 57 21"
+                stroke="#111"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <path
+                d="M57 21 C56 24 57 27 60 28 C63 29 67 27 68 25"
+                stroke="#111"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <line
+                x1="4"
+                y1="33"
+                x2="70"
+                y2="33"
+                stroke="#111"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+          <button
+            @click="open = !open"
+            class="text-gray-500 hover:text-gray-800 transition-colors p-1"
+          >
+            <svg
+              x-show="!open"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              x-show="open"
+              x-cloak
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          x-show="open"
+          x-cloak
+          class="mobile-menu-enter border-t border-gray-100 px-5 pb-4 pt-2 flex flex-col gap-1"
+        >
+          <a
+            href="#"
+            class="py-3 text-[15px] font-medium text-gray-800 border-b border-gray-100 hover:text-black transition-colors"
+            >About</a
+          >
+          <a
+            href="#"
+            class="py-3 text-[15px] font-medium text-gray-800 border-b border-gray-100 hover:text-black transition-colors"
+            >How To Use</a
+          >
+          <a
+            href="#"
+            class="py-3 text-[15px] font-medium text-gray-800 border-b border-gray-100 hover:text-black transition-colors"
+            >Benefits</a
+          >
+          <a
+            href="#"
+            class="py-3 px-4 text-white rounded-2xl bg-primary text-[15px] font-medium hover:text-black transition-colors"
+            >Get Started</a
+          >
+        </div>
+      </nav>
+    </header>
+    <!-- Hero -->
+    <section
+      class="relative m-8 h-[calc(100vh-64px)] rounded-4xl overflow-hidden flex flex-col items-center justify-center"
+    >
+      <video
+        autoplay
+        muted
+        loop
+        class="absolute inset-0 w-full h-full object-cover -z-10"
+      >
+        <source
+          src="https://www.pexels.com/download/video/34170260/"
+          type="video/mp4"
+        />
+      </video>
+
+      <span
+        class="bg-gray-400/20 rounded-full bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 py-2 px-6 uppercase font-semibold border border-gray-100 text-gray-100"
+        ><i class="ri-circle-fill mr-2 text-green-500"></i> Lorem Ipsum Dolor
+        Sit Amet</span
+      >
+      <h1
+        class="text-white text-center text-[2.80rem] lg:text-[110px] font-semibold leading-tight"
+      >
+        Designing Timeless
+        <span class="font-instrument-serif font-normal italic">Stories</span>
+      </h1>
+      <div class="flex gap-4 mt-14">
+        <a href="#" class="bg-white py-4 px-8 rounded-full uppercase font-bold"
+          >View Work <i class="ri-arrow-right-line ml-2"></i
+        ></a>
+        <a
+          href="#"
+          class="text-gray-100 hover:text-white py-4 px-8 rounded-full uppercase font-bold transition"
+          >View Work <i class="ri-arrow-right-line ml-2"></i
+        ></a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="pt-4 lg:py-8">
+      <p
+        class="text-gray-600 tracking-tight text-xl font-medium text-center lg:mt-20"
+      >
+        why happly?
+      </p>
+      <div class="mt-8 px-8">
+        <h2
+          class="text-4xl lg:text-6xl font-semibold text-center tracking-tight leading-tight"
+        >
+          Lorem Ipsum
+          <span class="inline-block align-middle mx-2">
+            <img
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2340&auto=format&fit=crop"
+              alt="yay"
+              class="h-[1.2em] w-[2.5em] object-cover rounded-full"
+            />
+          </span>
+          is simply dummy text of the printing and typesetting industry. Lorem
+          Ipsum has
+          <span class="inline-block align-middle mx-2">
+            <img
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2340&auto=format&fit=crop"
+              alt="yay"
+              class="h-[1.2em] w-[2.5em] object-cover rounded-full"
+            />
+          </span>
+          been the industry's standard dummy text ever since the 1500s.
+        </h2>
+      </div>
+      <div class="mt-20 grid grid-cols-1 lg:grid-cols-3">
+        <div
+          class="h-72 flex flex-col justify-between p-8 border-b border-t border-b-black border-t-black lg:border-r lg:border-r-black"
+        >
+          <p class="text-3xl"><i class="ri-flashlight-line"></i></p>
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight">precise dosing</h2>
+            <p class="text-xl font-normal tracking-tight w-2/3">
+              consistent, measured feels in every gummy
+            </p>
+          </div>
+        </div>
+        <div
+          class="h-72 flex flex-col justify-between p-8 border-b border-t border-b-black border-t-black lg:border-r lg:border-r-black"
+        >
+          <p class="text-3xl"><i class="ri-flashlight-line"></i></p>
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight">precise dosing</h2>
+            <p class="text-xl font-normal tracking-tight w-2/3">
+              consistent, measured feels in every gummy
+            </p>
+          </div>
+        </div>
+        <div
+          class="h-72 flex flex-col justify-between p-8 border-b border-t border-b-black border-t-black"
+        >
+          <p class="text-3xl"><i class="ri-flashlight-line"></i></p>
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight">precise dosing</h2>
+            <p class="text-xl font-normal tracking-tight w-2/3">
+              consistent, measured feels in every gummy
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="relative flex overflow-x-hidden pb-8">
+      <div
+        class="animate-marquee py-12 whitespace-nowrap uppercase text-secondary font-semibold"
+      >
+        <span class="mx-4 text-7xl">#livelikeanathlete</span>
+        <span class="mx-4 text-7xl">#livelikeanathlete</span>
+        <span class="mx-4 text-7xl">#livelikeanathlete</span>
+        <span class="mx-4 text-7xl">#livelikeanathlete</span>
+        <span class="mx-4 text-7xl">#livelikeanathlete</span>
+      </div>
+    </div>
+
+    <!-- How it Works -->
+    <section class="min-h-screen py-8 px-14 bg-primary">
+      <div class="flex text-white">
+        <p class="text-5xl font-medium">
+          <span
+            class="text-sm font-medium tracking-tight uppercase mr-14 lg:mr-30"
+          >
+            How it Works?
+          </span>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s,
+        </p>
+      </div>
+
+      <div
+        class="h-90 mt-30 flex flex-col lg:flex-row lg:justify-between lg:items-center justify-center border-b border-t border-b-white border-t-white"
+      >
+        <div class="flex justify-between items-center text-white">
+          <i class="ri-file-edit-line text-8xl"></i>
+          <p class="text-2xl flex gap-x-4 items-center uppercase font-medium">
+            Step <span class="text-9xl font-bold">01</span>
+          </p>
+        </div>
+        <p class="text-white text-2xl font-medium mt-6">
+          Most creative agency in Brazil 2024 - 2025
+        </p>
+      </div>
+      <div class="h-90 flex flex-col justify-center border-b border-b-white">
+        <div class="flex justify-between items-center text-white">
+          <i class="ri-file-edit-line text-8xl"></i>
+          <p class="text-2xl flex gap-x-4 items-center uppercase font-medium">
+            Step <span class="text-9xl font-bold">02</span>
+          </p>
+        </div>
+        <p class="text-white text-2xl font-medium mt-6">
+          Most creative agency in Brazil 2024 - 2025
+        </p>
+      </div>
+      <div class="h-90 flex flex-col justify-center border-b border-b-white">
+        <div class="flex justify-between items-center text-white">
+          <i class="ri-file-edit-line text-8xl"></i>
+          <p class="text-2xl flex gap-x-4 items-center uppercase font-medium">
+            Step <span class="text-9xl font-bold">03</span>
+          </p>
+        </div>
+        <p class="text-white text-2xl font-medium mt-6">
+          Most creative agency in Brazil 2024 - 2025
+        </p>
+      </div>
+      <div class="h-90 flex flex-col justify-center border-b border-b-white">
+        <div class="flex justify-between items-center text-white">
+          <i class="ri-file-edit-line text-8xl"></i>
+          <p class="text-2xl flex gap-x-4 items-center uppercase font-medium">
+            Step <span class="text-9xl font-bold">04</span>
+          </p>
+        </div>
+        <p class="text-white text-2xl font-medium mt-6">
+          Most creative agency in Brazil 2024 - 2025
+        </p>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="py-8 px-8 bg-secondary/10">
+      <!-- MOBILE: stack vertikal | DESKTOP: 3 kolom sejajar -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:items-stretch">
+        <!-- KOLOM KIRI — tinggi penuh -->
+        <div
+          class="bg-white p-8 border border-secondary rounded-2xl flex flex-col justify-between"
+        >
+          <h2 class="text-4xl font-semibold leading-tight">
+            <span class="underline">FAST</span> accelerates absorption for a
+            faster lift and a more reliable experience.
+          </h2>
+          <img
+            src="https://images.unsplash.com/photo-1579017308347-e53e0d2fc5e9?q=80&w=800&auto=format&fit=crop"
+            alt=""
+            class="mt-6 rounded-2xl w-full object-cover"
+          />
+        </div>
+
+        <!-- KOLOM TENGAH — 2 card vertikal -->
+        <div class="flex flex-col gap-4">
+          <!-- 2x -->
+          <div
+            class="flex-1 bg-white p-8 border border-secondary rounded-2xl flex flex-col justify-between"
+          >
+            <h2 class="text-8xl font-bold">2x</h2>
+            <p class="text-base font-normal mt-4">
+              nearly 2x faster onset than gummies without our
+              <span class="underline">FAST</span> nano-emulsion
+            </p>
+          </div>
+          <!-- predictable -->
+          <div
+            class="flex-1 bg-white p-10 border border-secondary rounded-2xl flex items-center justify-center text-center"
+          >
+            <h2 class="text-3xl lg:text-4xl font-bold leading-tight">
+              predictable, smooth effects you can dial up or down
+            </h2>
+          </div>
+        </div>
+
+        <!-- KOLOM KANAN — 2 card vertikal -->
+        <div class="flex flex-col gap-4">
+          <!-- $3m -->
+          <div
+            class="flex-1 bg-white p-8 border border-secondary rounded-2xl flex gap-4"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1587463646075-888e8afef90e?q=80&w=600&auto=format&fit=crop"
+              alt=""
+              class="w-2/5 object-cover rounded-xl self-stretch"
+            />
+            <div class="flex flex-col justify-between">
+              <h2 class="text-7xl font-bold leading-none">$3m</h2>
+              <p class="text-sm font-normal mt-2">
+                spent on a clinical trial that verified cannabinoid levels of
+                80% higher &amp; delivered 50% faster than non-nano gummies.
+              </p>
+            </div>
+          </div>
+          <!-- #1 -->
+          <div
+            class="flex-1 bg-white p-8 border border-secondary rounded-2xl flex flex-col justify-between overflow-hidden relative"
+          >
+            <div class="flex justify-between items-start">
+              <h2 class="text-8xl font-bold">#1</h2>
+              <img
+                src="https://images.unsplash.com/photo-1587463646075-888e8afef90e?q=80&w=600&auto=format&fit=crop"
+                alt=""
+                class="h-28 w-28 object-cover rounded-xl"
+              />
+            </div>
+            <p class="text-sm font-normal mt-4">
+              the only gummy in the US made with our proprietary
+              <span class="underline">FAST</span> technology (patent pending)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="min-h-screen py-8 px-8 bg-black text-white">
+      <div class="text-center">
+        <p class="text-xl font-medium mt-16 lg:mt-24">It's a Lifestyle</p>
+        <h2 class="text-5xl font-medium mt-10">Are You Ready To EatNaked?</h2>
+        <p class="text-gray-400 font-light tracking-tight mt-6 mb-10">
+          Customize Your Plan, or Let Us Choose For You!
+        </p>
+        <a
+          href="#"
+          class="bg-linear-to-r from-secondary/70 to-secondary/40 rounded-full bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 py-4 pl-2 pr-6 uppercase font-semibold text-gray-100"
+          ><i
+            class="ri-arrow-right-line bg-secondary text-xl p-2 rounded-full mr-4"
+          ></i>
+          Get Started</a
+        >
+      </div>
+      <div
+        class="flex overflow-x-scroll gap-8 lg:gap-4 scrollbar-hide snap-x snap-mandatory mt-20 lg:mt-50"
+      >
+        <div class="min-w-98 lg:min-w-2xl">
+          <div
+            class="bg-linear-to-br from-gray-400/20 via-gray-600/20 to-secondary rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 p-4 font-semibold border border-gray-600 text-gray-100"
+          >
+            <div class="bg-black rounded-2xl p-8 pb-20">
+              <h class="text-xl">Eula Lawrence</h>
+              <p class="text-secondary text-sm">
+                University of Toronto Professor
+              </p>
+              <p class="font-light tracking-tight mt-10 text-gray-400">
+                "Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown
+                printer took a galley of type and scrambled it to make a type
+                specimen book. It has survived not only five centuries"
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="min-w-98 lg:min-w-2xl">
+          <div
+            class="bg-linear-to-tl from-gray-400/20 via-gray-600/20 to-secondary rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 p-4 font-semibold border border-gray-600 text-gray-100"
+          >
+            <div class="bg-black rounded-2xl p-8 pb-20">
+              <h class="text-xl">Eula Lawrence</h>
+              <p class="text-secondary text-sm">
+                University of Toronto Professor
+              </p>
+              <p class="font-light tracking-tight mt-10 text-gray-400">
+                "Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown
+                printer took a galley of type and scrambled it to make a type
+                specimen book. It has survived not only five centuries"
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="min-w-98 lg:min-w-2xl">
+          <div
+            class="bg-linear-to-br from-gray-400/20 via-gray-600/20 to-secondary rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 p-4 font-semibold border border-gray-600 text-gray-100"
+          >
+            <div class="bg-black rounded-2xl p-8 pb-20">
+              <h class="text-xl">Eula Lawrence</h>
+              <p class="text-secondary text-sm">
+                University of Toronto Professor
+              </p>
+              <p class="font-light tracking-tight mt-10 text-gray-400">
+                "Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown
+                printer took a galley of type and scrambled it to make a type
+                specimen book. It has survived not only five centuries"
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="min-w-98 lg:min-w-2xl">
+          <div
+            class="bg-linear-to-br from-gray-400/20 via-gray-600/20 to-secondary rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 p-4 font-semibold border border-gray-600 text-gray-100"
+          >
+            <div class="bg-black rounded-2xl p-8 pb-20">
+              <h class="text-xl">Eula Lawrence</h>
+              <p class="text-secondary text-sm">
+                University of Toronto Professor
+              </p>
+              <p class="font-light tracking-tight mt-10 text-gray-400">
+                "Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown
+                printer took a galley of type and scrambled it to make a type
+                specimen book. It has survived not only five centuries"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="absolute w-screen h-2 bg-black rounded-b-4xl"></div>
+
+    <!-- <footer class="min-h-screen bg-primary p-8">
+      <div
+        class="flex flex-col justify-center text-center py-40 border-b border-b-white"
+      >
+        <p class="text-white text-xl font-medium">
+          Built for AI. Ready for You.
+        </p>
+      </div>
+      <div class="flex flex-col lg:flex-row">
+        <div class="flex justify-between mt-4">
+          <div>
+            <h3 class="text-white text-xl font-semibold">Resources</h3>
+            <ul class="mt-6 text-white uppercase font-medium">
+              <li>
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white text-xl font-semibold">Connect</h3>
+            <ul class="mt-6 text-white uppercase font-medium">
+              <li>
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+              <li class="mt-2">
+                <a href="#"
+                  >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4">
+          <h3 class="text-white text-xl font-semibold">Connect</h3>
+          <ul class="mt-6 text-white uppercase font-medium">
+            <li>
+              <a href="#"
+                >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+              ></a>
+            </li>
+            <li class="mt-2">
+              <a href="#"
+                >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+              ></a>
+            </li>
+            <li class="mt-2">
+              <a href="#"
+                >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+              ></a>
+            </li>
+            <li class="mt-2">
+              <a href="#"
+                >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+              ></a>
+            </li>
+            <li class="mt-2">
+              <a href="#"
+                >Brand Kit <i class="ri-arrow-right-up-line text-xl"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer> -->
+    <footer class="bg-primary px-8 lg:px-16 text-white">
+      <!-- HERO TEXT -->
+      <div
+        class="min-h-[40vh] flex items-center justify-center border-b border-white/30"
+      >
+        <p class="text-xl lg:text-2xl font-medium text-center">
+          Built for AI. Ready for you.
+        </p>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 py-20">
+        <!-- RESOURCES -->
+        <div class="flex justify-between">
+          <div>
+            <h3 class="text-xl font-semibold mb-6">Resources</h3>
+            <ul class="space-y-3 uppercase font-medium">
+              <li>
+                <a href="#" class="flex items-center gap-2">
+                  Brand Kit <i class="ri-arrow-right-up-line text-lg"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center gap-2">
+                  Shelby Explorer <i class="ri-arrow-right-up-line text-lg"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center gap-2">
+                  Shelby Dev Docs <i class="ri-arrow-right-up-line text-lg"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center gap-2">
+                  Calculator <i class="ri-arrow-right-up-line text-lg"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center gap-2">
+                  Whitepaper <i class="ri-arrow-right-up-line text-lg"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CONNECT -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6">Connect</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <a
+                href="#"
+                class="w-14 h-14 rounded-xl bg-black/70 flex items-center justify-center"
+              >
+                <i class="ri-discord-fill text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="w-14 h-14 rounded-xl bg-black/70 flex items-center justify-center"
+              >
+                <i class="ri-twitter-x-line text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="w-14 h-14 rounded-xl bg-black/70 flex items-center justify-center"
+              >
+                <i class="ri-youtube-fill text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="w-14 h-14 rounded-xl bg-black/70 flex items-center justify-center"
+              >
+                <i class="ri-github-fill text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEGAL -->
+        <div>
+          <h3 class="text-xl font-semibold mb-6">Legal</h3>
+          <ul class="space-y-3 uppercase font-medium">
+            <li>
+              <a href="#">Terms of Service</a>
+            </li>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COPYRIGHT -->
+      <div class="border-t border-white/30 py-6">
+        <p class="text-sm">© 2026 Shelby Foundation</p>
+      </div>
+    </footer>
+  </body>
+</html>
